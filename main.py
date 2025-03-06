@@ -1,5 +1,5 @@
 from audio import convert_m4a_to_mp3, donwload_youtube_video_audio
-from transcription import transquever_video, salvar_em_arquivo, formatar_texto, get_text_from_path
+from transcription import transcribe_video, save_to_flie, format_text, get_text_from_path
 
 
 
@@ -20,12 +20,12 @@ def main():
         output_path = f"{path}/{file_name}.{convert_format}"
         convert_m4a_to_mp3(f"{path}/{file_name}.{main_format}",output_path, format_1=main_format, format_2=convert_format)
         trans_raw_path = f"{path_trans}{file_name}_raw.txt"
-        resp = transquever_video(output_path,device,model)
-        salvar_em_arquivo(trans_raw_path, resp)
+        resp = transcribe_video(output_path,device,model)
+        save_to_flie(trans_raw_path, resp)
         saida_formatada = trans_raw_path
         saida_formatada = saida_formatada.replace(".txt","_formatado.txt")
-        format_text = formatar_texto(get_text_from_path(trans_raw_path),  translate=translate)
-        salvar_em_arquivo(saida_formatada,format_text)
+        format_text = format_text(get_text_from_path(trans_raw_path),  translate=translate)
+        save_to_flie(saida_formatada,format_text)
 
 
 if __name__ == '__main__':

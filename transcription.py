@@ -4,7 +4,7 @@ from cleantext import clean
 import translators
 
 
-def transquever_video(path,device,model):
+def transcribe_video(path,device,model):
     
     
     if torch.cuda.is_available():
@@ -18,7 +18,7 @@ def transquever_video(path,device,model):
         print("Cuda não está disponível")
         return False
 
-def salvar_em_arquivo(path, text):
+def save_to_flie(path, text):
     with open(path,'w', encoding="utf-8") as f:
         f.write(text)
 
@@ -33,7 +33,7 @@ def get_text_from_path(path):
         return text
 
 
-def formatar_texto(raw, translate = False):
+def format_text(raw, translate = False):
     text = ""
     print("+ Separando o texto por setenças.")
     raw_text = raw.split(". ")
@@ -54,15 +54,3 @@ def formatar_texto(raw, translate = False):
     return text
 
 
-
-
-#path = "how_make_rpg_good.mp3"
-
-
-#saida_text = "text_original.txt"
-
-
-
-#salvar_em_arquivo(saida_text, resp)
-
-#salvar_em_arquivo(saida_formatada,formatar_texto(get_text_from_path(saida_text), translate=True))
