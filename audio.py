@@ -21,15 +21,16 @@ def donwload_youtube_video_audio(url, path, audio = False, highres = False):
         print(f"+ Baixando {yt.title}.mp4")
         if highres:
             path += "/1080p"
-
+            
+            print("+ Limpando título.")
             title = clean_title_youtube(yt.title)
 
 
-            print("+ Tentando baixar pelo maior resolução.")
+            print("+ Baixando faixa de video. ")
             ys = yt.streams.filter(res="1080p")[0]
             ys.download(output_path=path, filename=f"{title}.mp4")
 
-            print("+ Baixando faixa de audio.")
+            print("+ Baixando faixa de audio. ")
             ys = yt.streams.get_audio_only()
             ys.download(output_path=path, filename=f"{title}.m4a")
 
@@ -50,21 +51,21 @@ def donwload_youtube_video_audio(url, path, audio = False, highres = False):
             return title
         else:
             ys = yt.streams.get_highest_resolution()
-            ys.download(output_path=path)
+            ys.download(output_path=path, filename=f"{title}.m4a")
             return title
     else:
         print(f"+ Baixando {yt.title}.m4a")
         ys = yt.streams.get_audio_only()
-        ys.download(output_path=path)
         title = clean_title_youtube(yt.title)
+        ys.download(output_path=path, filename=f"{title}.m4a")
         return title
 
 def main():
     path = "video_audio/"
     only_audio = True
     high_res = True
-    print("==============================")
     while True:
+        print("==============================")
         print("Youtube Downloader 1.5")
         print("[1] Vídeo [2] Playlist")
         print("==============================")
@@ -76,14 +77,15 @@ def main():
             msg = input("> ")
             if msg == "1":
                 only_audio = False
-                path += "Video"
+                path += "videos"
                 donwload_youtube_video_audio(url,path,only_audio,high_res)
             else:
                 only_audio = True
-                path += "Áudio"
+                path += "audios"
                 donwload_youtube_video_audio(url,path,only_audio)
         else:
             print("- Não implementado")
+            print("+ Por favor, não abuse :)")
 
 
 def combine_audio_video(path_video,path_audio,path_output):
@@ -93,7 +95,7 @@ def combine_audio_video(path_video,path_audio,path_output):
 
 
 def clean_title_youtube(title):
-    title = clean(title).replace(" ", "_")
+    title = clean(title).replace(" ", "_").replace(".","").replace("/","")
     return title
 
 
