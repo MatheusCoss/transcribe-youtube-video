@@ -6,3 +6,4 @@ torchvision
 torchaudio
 pytubefix
 pydub
+ffmpeg-python
