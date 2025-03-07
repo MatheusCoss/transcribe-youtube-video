@@ -8,7 +8,7 @@
 Script para baixar vídeos do Youtube e transcrever usando o modelo Whisper da Openai, além de limpar e traduzir o texto.
 
 ## Instalação
-
+Python 3.11.0 - https://www.python.org/downloads/release/python-3110/
 ```
 pip install -r requirements.txt
 ```
