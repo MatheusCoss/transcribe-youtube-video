@@ -11,12 +11,13 @@ def main():
     convert_format = "mp3"
     device = "cuda"
     model = "small"
-    translate = True
+    translate = False
+    only_audio = True
     while True:
         print("Transcritor de video do Youtube 1.0")
         print("Digite primeiro a URL do video")
         url = input("URL> ")
-        file_name = donwload_youtube_video_audio(url,path,True)
+        file_name = donwload_youtube_video_audio(url,path,only_audio)
         output_path = f"{path}/{file_name}.{convert_format}"
         convert_m4a_to_mp3(f"{path}/{file_name}.{main_format}",output_path, format_1=main_format, format_2=convert_format)
         trans_raw_path = f"{path_trans}{file_name}_raw.txt"
@@ -24,8 +25,8 @@ def main():
         save_to_flie(trans_raw_path, resp)
         saida_formatada = trans_raw_path
         saida_formatada = saida_formatada.replace(".txt","_formatado.txt")
-        format_text = format_text(get_text_from_path(trans_raw_path),  translate=translate)
-        save_to_flie(saida_formatada,format_text)
+        final_text= format_text(get_text_from_path(trans_raw_path),  translate=translate)
+        save_to_flie(saida_formatada,final_text)
 
 
 if __name__ == '__main__':

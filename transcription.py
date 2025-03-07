@@ -3,7 +3,6 @@ import torch
 from cleantext import clean
 import translators
 
-
 def transcribe_video(path,device,model):
     
     
@@ -40,16 +39,19 @@ def format_text(raw, translate = False):
     len_text = len(raw_text)
     cont = 0
     for sentence in raw_text:
-        sentence = clean(sentence, fix_unicode=True, to_ascii=True)
-        if not translate:
-            text += f"{sentence}.\n"
-            text += "\n"
-        else:
-            if sentence != None:
-                text += f"{translate_text(sentence)}.\n"
+        try:
+            sentence = clean(sentence, fix_unicode=True, to_ascii=True)
+            if not translate:
+                text += f"{sentence}.\n"
                 text += "\n"
-        cont += 1
-        print(f"+ {cont}/{len_text} setenças feitas..")
+            else:
+                if sentence != None:
+                    text += f"{translate_text(sentence)}.\n"
+                    text += "\n"
+            cont += 1
+            print(f"+ {cont}/{len_text} setenças feitas..")
+        except Exception as e:
+            print(f"- Erro na setença: {sentence}, indo para a próxima..")
 
     return text
 

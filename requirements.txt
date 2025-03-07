@@ -1,0 +1,8 @@
+cleantext
+translators
+openai-whisper
+torch
+torchvision
+torchaudio
+pytubefix
+pydub
