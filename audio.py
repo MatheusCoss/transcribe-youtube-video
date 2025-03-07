@@ -25,11 +25,25 @@ def donwload_youtube_video_audio(url, path, audio = False):
         return yt.title
 
 def main():
+    path = "video_audio/audios"
+    only_audio = True
     with True:
-        print("Transcritor de video do Youtube 1.0")
-        print("Digite primeiro a URL do video")
-        url = input("URL> ")
-        file_name = donwload_youtube_video_audio(url,path,only_audio)
+        print("Youtube Downloader 1.0")
+        print("[1] video [2] playlist")
+        msg = input("> ")
+        if msg == "1":
+            print("Digite primeiro a URL do video")
+            url = input("URL> ")
+            print("[1] video [2] audio")
+            msg = input("> ")
+            if msg == "1":
+                only_audio = False
+                file_name = donwload_youtube_video_audio(url,path,only_audio)
+            else:
+                only_audio = True
+                file_name = donwload_youtube_video_audio(url,path,only_audio)
+        else:
+            print("- Não implementado")
 
 
 if __name__ == '__main__':
