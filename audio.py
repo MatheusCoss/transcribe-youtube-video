@@ -27,7 +27,7 @@ def donwload_youtube_video_audio(url, path, audio = False):
 def main():
     path = "video_audio/audios"
     only_audio = True
-    with True:
+    while True:
         print("Youtube Downloader 1.0")
         print("[1] video [2] playlist")
         msg = input("> ")
