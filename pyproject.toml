@@ -1,0 +1,18 @@
+[project]
+name = "vmc"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = "==3.10.16"
+dependencies = [
+    "cleantext>=1.1.4",
+    "ffmpeg-python>=0.2.0",
+    "openai-whisper>=20250625",
+    "pydub>=0.25.1",
+    "pytubefix>=9.3.0",
+    "torch>=2.7.1",
+    "torchaudio>=2.7.1",
+    "torchvision>=0.22.1",
+    "translators>=6.0.1",
+    "whisper>=1.1.10",
+]

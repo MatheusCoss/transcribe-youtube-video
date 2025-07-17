@@ -1,4 +1,4 @@
-from pytubefix import YouTube, Playlist
+from pytubefix import YouTube
 from pytubefix.cli import on_progress
 from pydub import AudioSegment
 import subprocess
